@@ -1,0 +1,17 @@
+int diagonalDifference(vector<vector<int>> arr) {
+    int diagDif = 0, l2rDif = 0, r2lDif = 0, i, j, t = 0, s = 2147483647;
+
+    for (i = 0; i < arr.size(); i++) {
+        if(s > arr[i].size()){
+            s = arr[i].size() - 1;
+        }
+        for (j = 0; j < arr[i].size(); j++) {
+            l2rDif += arr[i][t++];
+            r2lDif += arr[i][s--];
+            break;
+        }
+    }
+    diagDif = l2rDif - r2lDif;
+    
+    return (diagDif >= 0) ? diagDif : (diagDif * -1);
+}
